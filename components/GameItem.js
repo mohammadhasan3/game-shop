@@ -10,7 +10,7 @@ const GameItem = ({ game }) => {
   return (
     <ListItem>
       <Image
-        style={{ width: 100, height: 100 }}
+        style={{ width: 50, height: 50 }}
         source={{ uri: game.image.replace("localhost", "192.168.8.132") }}
       />
       <ShopItemStyled>{game.name}</ShopItemStyled>

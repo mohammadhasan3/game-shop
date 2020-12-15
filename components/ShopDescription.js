@@ -23,8 +23,7 @@ const ShopDescription = ({ navigation, route }) => {
       <ShopDetailWrapper>
         <ShopDetailImage
           source={{
-            uri:
-              "https://www.wpri.com/wp-content/uploads/sites/23/2020/08/Red-Panda-cutie.jpg?w=640",
+            uri: shop.image.replace("localhost", "192.168.8.132"),
           }}
         />
         <ShopDetailTitle>{shop.name}</ShopDetailTitle>

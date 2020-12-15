@@ -3,16 +3,12 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 
 //Styling
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 //Components
-import Home from "./components/Home";
-import ShopList from "./components/ShopList";
-import ShopDescription from "./components/ShopDescription";
-import GameList from "./components/GameList";
+import RootNavigator from "./components/Navigator";
 
 const theme = {
   light: {
@@ -29,8 +25,6 @@ const theme = {
     red: "#ff3232",
   },
 };
-
-const { Navigator, Screen } = createStackNavigator();
 
 export default function App() {
   // const themeText = ["Light Mode", "Dark Mode"];
@@ -55,36 +49,8 @@ export default function App() {
     <View style={styles.container}>
       <ThemeProvider theme={theme.light}>
         <NavigationContainer>
-          <Navigator
-            initialRouteName="Home"
-            screenOptions={{
-              headerTintColor: "white",
-              headerStyle: {
-                backgroundColor: "#90d4ed",
-              },
-              headerTitleStyle: {
-                fontWeight: "bold",
-              },
-            }}
-          >
-            <Screen
-              name="Home"
-              component={Home}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Screen
-              name="Shops"
-              component={ShopList}
-              options={{ title: "Choose a Shop" }}
-            />
-            <Screen name="Games" component={GameList} />
-            <Screen name="ShopDescription" component={ShopDescription} />
-          </Navigator>
+          <RootNavigator />
         </NavigationContainer>
-        {/* <ShopList /> */}
-        {/* <ShopDescription /> */}
       </ThemeProvider>
 
       <StatusBar style="auto" />

@@ -16,8 +16,7 @@ const ShopItem = ({ shop, navigation }) => {
       <Image
         style={{ width: 100, height: 100 }}
         source={{
-          uri:
-            "https://www.wpri.com/wp-content/uploads/sites/23/2020/08/Red-Panda-cutie.jpg?w=640",
+          uri: shop.image.replace("localhost", "192.168.8.132"),
         }}
       />
       <ShopItemStyled>{shop.name}</ShopItemStyled>
