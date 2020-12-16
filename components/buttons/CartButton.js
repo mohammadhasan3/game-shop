@@ -1,18 +1,29 @@
+//Libraries
 import React from "react";
+import { observer } from "mobx-react";
 import { useNavigation } from "@react-navigation/native";
 
 //Styling
-import { CartButtonStyled } from "../../styles";
+import { Button, Left, Right } from "native-base";
+import { CartButtonStyled, CartTextStyled } from "../../styles";
+
+//Stores
+import cartStore from "../../stores/cartStore";
 
 const CartButton = () => {
   const navigation = useNavigation();
   return (
-    <CartButtonStyled
-      type="AntDesign"
-      name="shoppingcart"
-      onPress={() => navigation.navigate("Cart")}
-    />
+    <Button transparent light>
+      <CartTextStyled>{cartStore.totalQuantity}</CartTextStyled>
+
+      <CartButtonStyled
+        type="AntDesign"
+        name="shoppingcart"
+        onPress={() => navigation.navigate("Cart")}
+      />
+      <CartTextStyled>{cartStore.totalPrice} KD</CartTextStyled>
+    </Button>
   );
 };
 
-export default CartButton;
+export default observer(CartButton);

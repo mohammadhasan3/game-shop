@@ -8,6 +8,9 @@ import GameList from "../GameList";
 import CartList from "../CartList";
 import CartButton from "../buttons/CartButton";
 
+//Styles
+import { Left, Right } from "native-base";
+
 import { createStackNavigator } from "@react-navigation/stack";
 
 const { Navigator, Screen } = createStackNavigator();
@@ -46,6 +49,9 @@ const RootNavigator = () => {
           const { shop } = route.params;
           return {
             title: shop.name,
+            headerTitleStyle: {
+              fontSize: 16,
+            },
             headerRight: () => <CartButton />,
           };
         }}
