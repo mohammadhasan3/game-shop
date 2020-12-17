@@ -7,6 +7,8 @@ import ShopDescription from "../ShopDescription";
 import GameList from "../GameList";
 import CartList from "../CartList";
 import CartButton from "../buttons/CartButton";
+import Signin from "../authentication/SignIn";
+import SignUp from "../authentication/SignUp";
 
 //Styles
 import { Left, Right } from "native-base";
@@ -57,6 +59,16 @@ const RootNavigator = () => {
         }}
       />
       <Screen name="Cart" component={CartList} />
+      <Screen
+        name="Signin"
+        component={Signin}
+        options={{ headerShown: false }}
+      />
+      <Screen
+        name="Signup"
+        component={SignUp}
+        options={{ headerShown: false }}
+      />
     </Navigator>
   );
 };

@@ -10,6 +10,7 @@ import { List, Spinner } from "native-base";
 
 //Components
 import CartItem from "./CartItem";
+import { CheckoutButton, CheckoutButtonText } from "../styles";
 
 const CartList = () => {
   if (gameStore.loading) return <Spinner />;
@@ -19,7 +20,14 @@ const CartList = () => {
       quantity: item.quantity,
     }))
     .map((item) => <CartItem item={item} key={item.name} />);
-  return <List>{cartList}</List>;
+  return (
+    <>
+      <List>{cartList}</List>
+      <CheckoutButton onPress={cartStore.checkout}>
+        <CheckoutButtonText>Checkout</CheckoutButtonText>
+      </CheckoutButton>
+    </>
+  );
 };
 
 export default observer(CartList);

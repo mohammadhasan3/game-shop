@@ -6,16 +6,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 import gameStore from "./gameStore";
 
 class CartStore {
-  items = [
-    // {
-    //   gameId: 4,
-    //   quantity: 5,
-    // },
-    // {
-    //   gameId: 5,
-    //   quantity: 3,
-    // },
-  ];
+  items = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -31,6 +22,25 @@ class CartStore {
     if (foundItem) foundItem.quantity += newItem.quantity;
     else this.items.push(newItem);
     await AsyncStorage.setItem("myCart", JSON.stringify(this.items));
+  };
+
+  //CHECK THIS
+  removeItemFromStore = async (newItem) => {
+    const foundItem = this.items.find((item) => item.gameId === newItem.gameId);
+    if (foundItem) foundItem.quantity -= newItem.quantity;
+    else this.items.pop(newItem);
+    await AsyncStorage.setItem("myCart", JSON.stringify(this.items));
+  };
+
+  removeItemFromCart = async (itemId) => {
+    this.items = this.items.filter((item) => item.gameId !== itemId);
+    await AsyncStorage.setItem("myCart", JSON.stringify(this.items));
+  };
+
+  checkout = async () => {
+    this.items = [];
+    alert("Checked Out Heh");
+    await AsyncStorage.removeItem("myCart");
   };
 
   get totalQuantity() {
